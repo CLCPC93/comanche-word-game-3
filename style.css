@@ -91,7 +91,48 @@ header {
   color: #333;
 }
 
-/* Keyboard + tile colors (Comanche Wordle blues) */
-.correct { background-color: #003366 !important; color: #fff; border-color: #003366 !important; }  /* dark blue */
-.present { background-color: #66b3ff !important; color: #003366; border-color: #66b3ff !important; }  /* light blue */
-.absent  { background-color: #ccc !important;    color: #333; border-color: #ccc !important; }
+/* Keep your existing border colors, fill inside with inset shadow */
+.tile.correct,
+.keyboard-button.correct {
+  background: transparent !important;
+  border-color: #aaccee !important; /* keep original */
+  box-shadow: inset 0 0 0 9999px #003366; /* dark blue fill */
+  color: #fff;
+}
+
+.tile.present,
+.keyboard-button.present {
+  background: transparent !important;
+  border-color: #aaccee !important; /* keep original */
+  box-shadow: inset 0 0 0 9999px #66b3ff; /* light blue fill */
+  color: #003366;
+}
+
+.tile.absent,
+.keyboard-button.absent {
+  background: transparent !important;
+  border-color: #aaccee !important; /* keep original */
+  box-shadow: inset 0 0 0 9999px #ccc; /* gray fill */
+  color: #333;
+}
+
+/* Smoothen interactions */
+.keyboard-button {
+  transition: box-shadow .15s ease, background .15s ease, color .15s ease, transform .05s ease;
+}
+
+/* Existing (unused) keys keep your hover */
+.keyboard-button:not(.correct):not(.present):not(.absent):hover {
+  background-color: #cce4ff;
+}
+
+/* Hover states for colored keys (keep borders, brighten the fill a touch) */
+.keyboard-button.correct:hover { box-shadow: inset 0 0 0 9999px #00264d; } /* a bit darker than #003366 */
+.keyboard-button.present:hover { box-shadow: inset 0 0 0 9999px #5aa9f8; } /* a bit richer than #66b3ff */
+.keyboard-button.absent:hover  { box-shadow: inset 0 0 0 9999px #bdbdbd; } /* slight lift from #ccc */
+
+/* Press feedback + keyboard access */
+.keyboard-button:active { transform: translateY(1px); }
+.keyboard-button:focus-visible { outline: 2px solid #145374; outline-offset: 2px; }
+
+
