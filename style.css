@@ -90,3 +90,8 @@ header {
   background-color: #ccc;
   color: #333;
 }
+
+/* Keyboard + tile colors (Comanche Wordle blues) */
+.correct { background-color: #003366 !important; color: #fff; border-color: #003366 !important; }  /* dark blue */
+.present { background-color: #66b3ff !important; color: #003366; border-color: #66b3ff !important; }  /* light blue */
+.absent  { background-color: #ccc !important;    color: #333; border-color: #ccc !important; }
